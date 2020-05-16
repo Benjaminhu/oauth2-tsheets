@@ -15,51 +15,54 @@ Usage is the same as The League's OAuth client, using `\Benjaminhu\OAuth2\Client
 
 ### Authorization Code Flow
 
-	<?php
+```php
 
-	session_start();
+<?php
 
-	$provider = new \Benjaminhu\OAuth2\Client\Provider\TSheets([
-		'clientId' => '{__TSheets-client-id__}',
-		'clientSecret' => '{__TSheets-client-secret__}',
-		'redirectUri' => '{__Your-callback-url__}',
-	]);
+session_start();
 
-	if (!isset($_GET['code'])) {
-		$authUrl = $provider->getAuthorizationUrl();
-		$_SESSION['oauth2state'] = $provider->getState();
-		header('Location: ' . $authUrl);
-		exit;
+$provider = new \Benjaminhu\OAuth2\Client\Provider\TSheets([
+	'clientId' => '{__TSheets-client-id__}',
+	'clientSecret' => '{__TSheets-client-secret__}',
+	'redirectUri' => '{__Your-callback-url__}',
+]);
 
-	} else if (empty($_GET['state']) || ( $_GET['state'] !== $_SESSION['oauth2state'] )) {
-		unset($_SESSION['oauth2state']);
-		exit('Invalid state');
+if (!isset($_GET['code'])) {
+	$authUrl = $provider->getAuthorizationUrl();
+	$_SESSION['oauth2state'] = $provider->getState();
+	header('Location: ' . $authUrl);
+	exit;
 
-	} else {
-		try {
-			$accessToken = $provider->getAccessToken('authorization_code', [
-				'code' => $_GET['code'],
-			]);
+} else if (empty($_GET['state']) || ( $_GET['state'] !== $_SESSION['oauth2state'] )) {
+	unset($_SESSION['oauth2state']);
+	exit('Invalid state');
 
-			echo '<pre>';
-			echo 'Token: ' . $accessToken->getToken() . PHP_EOL;
-			echo 'RefreshToken: ' . $accessToken->getRefreshToken() . PHP_EOL;
-			echo 'Expires: ' . $accessToken->getExpires() . PHP_EOL;
-			echo 'hasExpired: ' . ( $accessToken->hasExpired() ? 'expired' : 'not expired' ) . PHP_EOL;
+} else {
+	try {
+		$accessToken = $provider->getAccessToken('authorization_code', [
+			'code' => $_GET['code'],
+		]);
 
-			$resourceOwner = $provider->getResourceOwner($accessToken);
+		echo '<pre>';
+		echo 'Token: ' . $accessToken->getToken() . PHP_EOL;
+		echo 'RefreshToken: ' . $accessToken->getRefreshToken() . PHP_EOL;
+		echo 'Expires: ' . $accessToken->getExpires() . PHP_EOL;
+		echo 'hasExpired: ' . ( $accessToken->hasExpired() ? 'expired' : 'not expired' ) . PHP_EOL;
 
-			print_r($resourceOwner);
-			echo '</pre>';
+		$resourceOwner = $provider->getResourceOwner($accessToken);
 
-		} catch (Exception $e) {
-			exit($e->getMessage());
+		print_r($resourceOwner);
+		echo '</pre>';
 
-		} catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
-			exit($e->getMessage());
-		}
+	} catch (Exception $e) {
+		exit($e->getMessage());
+
+	} catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+		exit($e->getMessage());
 	}
+}
 
+```
 
 ## License
 
