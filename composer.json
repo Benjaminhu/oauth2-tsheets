@@ -1,0 +1,37 @@
+{
+    "name": "benjaminhu/oauth2-tsheets",
+    "description": "TSheets by QuickBooks OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
+    "keywords": [
+        "oauth",
+        "oauth2",
+        "authorization",
+        "authentication",
+        "identity",
+        "sso",
+        "single sign on",
+        "tsheets",
+        "tsheets quickbooks",
+        "tsheets api"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Simon",
+            "email": "benjamin79@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "league/oauth2-client": "1.*|2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Benjaminhu\\OAuth2\\Client\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Benjaminhu\\OAuth2\\Client\\Test\\": "test/src/"
+        }
+    }
+}
