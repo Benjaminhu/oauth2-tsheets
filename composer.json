@@ -16,8 +16,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Benjamin Simon",
-            "email": "benjamin79@gmail.com"
+            "name": "Benjamin Simon"
         }
     ],
     "require": {
