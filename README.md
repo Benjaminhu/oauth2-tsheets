@@ -13,18 +13,22 @@ composer require benjaminhu/oauth2-tsheets
 
 Usage is the same as The League's OAuth client, using `\Benjaminhu\OAuth2\Client\Provider\TSheets` as the provider.
 
+TSheets by QuickBooks: [Obtaining an API Access Token](https://tsheetsteam.github.io/api_docs/?php#obtaining-an-api-access-token)
+
 ### Authorization Code Flow
 
 ```php
 
 <?php
 
+require '{__PATH_TO_YOUR_VENDOR_DIRECTORY__}/autoload.php';
+
 session_start();
 
 $provider = new \Benjaminhu\OAuth2\Client\Provider\TSheets([
-	'clientId' => '{__TSheets-client-id__}',
-	'clientSecret' => '{__TSheets-client-secret__}',
-	'redirectUri' => '{__Your-callback-url__}',
+	'clientId' => '{__TSHEETS-CLIENT-ID__}',
+	'clientSecret' => '{__TSHEETS-CLIENT-SECRET__}',
+	'redirectUri' => '{__YOUR-CALLBACK-URL__}',
 ]);
 
 if (!isset($_GET['code'])) {
