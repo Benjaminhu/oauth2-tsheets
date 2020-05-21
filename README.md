@@ -68,6 +68,32 @@ if (!isset($_GET['code'])) {
 
 ```
 
+### Refresh Token Code Flow
+
+```php
+
+<?php
+
+$provider = new \Benjaminhu\OAuth2\Client\Provider\TSheets([
+	'clientId' => '{__TSHEETS-CLIENT-ID__}',
+	'clientSecret' => '{__TSHEETS-CLIENT-SECRET__}',
+	'redirectUri' => '{__YOUR-CALLBACK-URL__}',
+]);
+
+// load stored accessToken
+// $accessToken = loadAccessToken();
+
+$newAccessToken = $provider->getAccessToken('refresh_token', [
+	'grant_type' => 'refresh_token',
+	'access_token' => $accessToken
+]);
+
+// save new accessToken
+// saveAccessToken($newAccessToken);
+
+
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/Benjaminhu/oauth2-tsheets/blob/master/LICENSE) for more information.
