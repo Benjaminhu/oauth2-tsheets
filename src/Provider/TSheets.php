@@ -57,6 +57,26 @@ class TSheets extends AbstractProvider
 	}
 
 	/**
+	 * Returns a prepared request for requesting an access token.
+	 *
+	 * @param array $params Query string parameters
+	 * @return RequestInterface
+	 */
+	protected function getAccessTokenRequest(array $params)
+	{
+		$token = null;
+		// need getAuthorizationHeaders() to refresh token
+		if (isset($params['access_token'])) {
+			$token  = $params['access_token'];
+		}
+		$method  = $this->getAccessTokenMethod();
+		$url     = $this->getAccessTokenUrl($params);
+		$options = $this->optionProvider->getAccessTokenOptions($this->getAccessTokenMethod(), $params);
+
+		return $this->createRequest($method, $url, $token, $options);
+	}
+
+	/**
 	 * Get the full uri with appended oauth_token query string
 	 *
 	 * @param string $endpoint | with leading slash
