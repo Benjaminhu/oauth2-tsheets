@@ -7,11 +7,11 @@ This package provides [TSheets by QuickBooks](https://tsheetsteam.github.io/api_
 To install, use composer:
 
 ```
-composer require benjaminhu/oauth2-tsheets
+composer require liftkeeper/oauth2-tsheets
 ```
 ## Usage
 
-Usage is the same as The League's OAuth client, using `\Benjaminhu\OAuth2\Client\Provider\TSheets` as the provider.
+Usage is the same as The League's OAuth client, using `\Liftkeeper\OAuth2\Client\Provider\TSheets` as the provider.
 
 TSheets by QuickBooks: [Obtaining an API Access Token](https://tsheetsteam.github.io/api_docs/?php#obtaining-an-api-access-token)
 
@@ -25,7 +25,7 @@ require '{__PATH_TO_YOUR_VENDOR_DIRECTORY__}/autoload.php';
 
 session_start();
 
-$provider = new \Benjaminhu\OAuth2\Client\Provider\TSheets([
+$provider = new \Liftkeeper\OAuth2\Client\Provider\TSheets([
 	'clientId' => '{__TSHEETS-CLIENT-ID__}',
 	'clientSecret' => '{__TSHEETS-CLIENT-SECRET__}',
 	'redirectUri' => '{__YOUR-CALLBACK-URL__}',
@@ -74,7 +74,7 @@ if (!isset($_GET['code'])) {
 
 <?php
 
-$provider = new \Benjaminhu\OAuth2\Client\Provider\TSheets([
+$provider = new \Liftkeeper\OAuth2\Client\Provider\TSheets([
 	'clientId' => '{__TSHEETS-CLIENT-ID__}',
 	'clientSecret' => '{__TSHEETS-CLIENT-SECRET__}',
 	'redirectUri' => '{__YOUR-CALLBACK-URL__}',
@@ -96,4 +96,4 @@ $newAccessToken = $provider->getAccessToken('refresh_token', [
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/Benjaminhu/oauth2-tsheets/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/Liftkeeper/oauth2-tsheets/blob/master/LICENSE) for more information.
