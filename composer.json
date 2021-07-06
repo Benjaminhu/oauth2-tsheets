@@ -1,5 +1,5 @@
 {
-    "name": "benjaminhu/oauth2-tsheets",
+    "name": "Liftkeeper/oauth2-tsheets",
     "description": "TSheets by QuickBooks OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
     "type": "library",
     "keywords": [
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Benjaminhu\\OAuth2\\Client\\": "src/"
+            "Liftkeeper\\OAuth2\\Client\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Benjaminhu\\OAuth2\\Client\\Test\\": "test/src/"
+            "Liftkeeper\\OAuth2\\Client\\Test\\": "test/src/"
         }
     }
 }
